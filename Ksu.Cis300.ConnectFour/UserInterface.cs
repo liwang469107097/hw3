@@ -95,7 +95,9 @@ namespace Ksu.Cis300.ConnectFour
         /// </summary>
         private void MakeComputerPlay()
         {
-
+            uxStatus.Text = "My move.";
+            Update();
+            ShowPlay(_computerPlayer.MakePlay(), uxStatus.Text);
         }
 
         /// <summary>
@@ -105,7 +107,25 @@ namespace Ksu.Cis300.ConnectFour
         /// <param name="e"></param>
         private void UserInterface_Load(object sender, EventArgs e)
         {
-
+            SetupDialog set = new SetupDialog();
+            if (set.ShowDialog() == DialogResult.OK)
+            {
+                if (set.ComputerPlaysFirst)
+                {
+                    ComputerPlayer computer = new ComputerPlayer(1, set.Level, _board);
+                    set.Visible = true;
+                    MakeComputerPlay();
+                    uxStatus.Text = "Your move.";
+                }
+                else
+                {
+                    ComputerPlayer computer = new ComputerPlayer(-1, set.Level, _board);
+                }
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
 
         /// <summary>
@@ -115,7 +135,20 @@ namespace Ksu.Cis300.ConnectFour
         /// <param name="e"></param>
         private void uxColumn0_Click(object sender, EventArgs e)
         {
-
+            Button b = (Button)sender;
+            int column = Convert.ToInt32(b.Text);
+            _board.Play(column);
+            ShowPlay(column, "O");
+            if (!GameIsOver(uxStatus.Text))
+            {
+                MakeComputerPlay();
+                uxStatus.Text = "Your move.";
+            }
+            else
+            {
+                ShowPlay(column, "X");
+                uxStatus.Text = "I move.";
+            }
         }
     }
 }

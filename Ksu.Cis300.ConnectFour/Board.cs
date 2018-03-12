@@ -47,7 +47,7 @@ namespace Ksu.Cis300.ConnectFour
         /// <summary>
         /// store the history of plays 
         /// </summary>
-        private Stack<int> _history;
+        private Stack<int> _history = new Stack<int>();
 
         /// <summary>
         /// keep track of the heuristic 2 score from the perspective of the first player.
@@ -99,11 +99,10 @@ namespace Ksu.Cis300.ConnectFour
         /// <param name="column">the column of the play. </param>
         public void Play(int column)
         {
-            for (int i = 0; i < _cells[column].Capacity; i++)
-            {
-                _score += _cells[column][i] * _currentPlayer;
-                _history.Push(column);
-            }
+            _score += _cellValues[_cells[column].Count, column] * _currentPlayer;
+            _history.Push(column);
+            _cells[column].Add(_currentPlayer);
+            _currentPlayer = -_currentPlayer;
         }
 
         /// <summary>
@@ -112,13 +111,9 @@ namespace Ksu.Cis300.ConnectFour
         public void Undo()
         {
             int column = _history.Pop();
-            for (int i = 0; i < _cells[column].Capacity; i++)
-            {
-                _score -= _cells[column][i] * _currentPlayer;
-                _cells[column].RemoveAt(_cells[Columns].Capacity - 1);
-            }
-            
-           
+            _currentPlayer = -_currentPlayer;
+            _cells[column].RemoveAt(_currentPlayer);
+            _score -= _cellValues[_cells[column].Count, column] * _currentPlayer;
         }
 
         /// <summary>
@@ -138,7 +133,7 @@ namespace Ksu.Cis300.ConnectFour
         /// <returns>the number of pieces on that column.</returns>
         public int ColumnCount(int column)
         {
-            return _cells[column].Capacity;
+            return _cells[column].Count;
         }
 
         //need to fix
@@ -154,15 +149,18 @@ namespace Ksu.Cis300.ConnectFour
         private int PathLength(int row, int column, int vIncrement, int hIncrement, int player)
         {
             int num = 0;
-            while (row > 0 && row <= Rows && column >0 && column <= Columns)
+            while (row >= 0 && row < Rows && column >= 0 && column < Columns)
             {
-                if(_cells[column].Count != 0)
+                if(_cells[column][row] != 0 && _currentPlayer == player)
                 {
-                    if (_currentPlayer == player)
-                    {
-                        num++;
-                    }
+                    num++;
                 }
+                else
+                {
+                    break;
+                }
+                row += vIncrement;
+                column += hIncrement;
             }
             return num;
         }
@@ -188,7 +186,7 @@ namespace Ksu.Cis300.ConnectFour
             {
                 return true;
             }
-            return IsPotentialWin(row, column, player);
+            return PathLength(row, column, 1, 0, player) == 4;
         }
 
         /// <summary>

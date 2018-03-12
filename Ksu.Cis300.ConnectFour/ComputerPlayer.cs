@@ -81,7 +81,7 @@ namespace Ksu.Cis300.ConnectFour
         /// <returns>an int giving the value of the current configuration represented by the Board field, from the given player's perspective. </returns>
         private int EvaluateCurrentPosition(int player, int depth, out int column)
         {
-            int value = 0;
+            int value = ComputeEvaluationFunction(player);
             column = 0;
             return value;
         }

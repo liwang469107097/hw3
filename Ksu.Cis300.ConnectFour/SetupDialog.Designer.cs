@@ -97,6 +97,7 @@
             // uxOk
             // 
             this.uxOk.AutoSize = true;
+            this.uxOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.uxOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxOk.Location = new System.Drawing.Point(17, 130);
             this.uxOk.Name = "uxOk";
