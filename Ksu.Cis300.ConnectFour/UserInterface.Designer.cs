@@ -43,15 +43,21 @@
             this.uxPlayColumn5 = new System.Windows.Forms.FlowLayoutPanel();
             this.uxPlayColumn6 = new System.Windows.Forms.FlowLayoutPanel();
             this.uxStatus = new System.Windows.Forms.TextBox();
+            this.uxColumnContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.uxButtonContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.uxColumnContainer.SuspendLayout();
+            this.uxButtonContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // uxPlayColumn0
             // 
             this.uxPlayColumn0.BackColor = System.Drawing.Color.White;
             this.uxPlayColumn0.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.uxPlayColumn0.Location = new System.Drawing.Point(12, 73);
+            this.uxPlayColumn0.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPlayColumn0.Location = new System.Drawing.Point(2, 2);
+            this.uxPlayColumn0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxPlayColumn0.Name = "uxPlayColumn0";
-            this.uxPlayColumn0.Size = new System.Drawing.Size(80, 421);
+            this.uxPlayColumn0.Size = new System.Drawing.Size(60, 342);
             this.uxPlayColumn0.TabIndex = 0;
             this.uxPlayColumn0.WrapContents = false;
             // 
@@ -59,9 +65,10 @@
             // 
             this.uxColumn0.AutoSize = true;
             this.uxColumn0.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxColumn0.Location = new System.Drawing.Point(12, 12);
+            this.uxColumn0.Location = new System.Drawing.Point(2, 2);
+            this.uxColumn0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxColumn0.Name = "uxColumn0";
-            this.uxColumn0.Size = new System.Drawing.Size(80, 48);
+            this.uxColumn0.Size = new System.Drawing.Size(60, 39);
             this.uxColumn0.TabIndex = 7;
             this.uxColumn0.Text = "0";
             this.uxColumn0.UseVisualStyleBackColor = true;
@@ -71,9 +78,10 @@
             // 
             this.uxColumn1.AutoSize = true;
             this.uxColumn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxColumn1.Location = new System.Drawing.Point(98, 12);
+            this.uxColumn1.Location = new System.Drawing.Point(66, 2);
+            this.uxColumn1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxColumn1.Name = "uxColumn1";
-            this.uxColumn1.Size = new System.Drawing.Size(80, 48);
+            this.uxColumn1.Size = new System.Drawing.Size(60, 39);
             this.uxColumn1.TabIndex = 8;
             this.uxColumn1.Text = "1";
             this.uxColumn1.UseVisualStyleBackColor = true;
@@ -83,9 +91,10 @@
             // 
             this.uxColumn2.AutoSize = true;
             this.uxColumn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxColumn2.Location = new System.Drawing.Point(184, 12);
+            this.uxColumn2.Location = new System.Drawing.Point(130, 2);
+            this.uxColumn2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxColumn2.Name = "uxColumn2";
-            this.uxColumn2.Size = new System.Drawing.Size(80, 48);
+            this.uxColumn2.Size = new System.Drawing.Size(60, 39);
             this.uxColumn2.TabIndex = 9;
             this.uxColumn2.Text = "2";
             this.uxColumn2.UseVisualStyleBackColor = true;
@@ -95,9 +104,10 @@
             // 
             this.uxColumn3.AutoSize = true;
             this.uxColumn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxColumn3.Location = new System.Drawing.Point(270, 12);
+            this.uxColumn3.Location = new System.Drawing.Point(194, 2);
+            this.uxColumn3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxColumn3.Name = "uxColumn3";
-            this.uxColumn3.Size = new System.Drawing.Size(80, 48);
+            this.uxColumn3.Size = new System.Drawing.Size(60, 39);
             this.uxColumn3.TabIndex = 10;
             this.uxColumn3.Text = "3";
             this.uxColumn3.UseVisualStyleBackColor = true;
@@ -107,9 +117,10 @@
             // 
             this.uxColumn4.AutoSize = true;
             this.uxColumn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxColumn4.Location = new System.Drawing.Point(356, 12);
+            this.uxColumn4.Location = new System.Drawing.Point(258, 2);
+            this.uxColumn4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxColumn4.Name = "uxColumn4";
-            this.uxColumn4.Size = new System.Drawing.Size(80, 48);
+            this.uxColumn4.Size = new System.Drawing.Size(60, 39);
             this.uxColumn4.TabIndex = 11;
             this.uxColumn4.Text = "4";
             this.uxColumn4.UseVisualStyleBackColor = true;
@@ -119,9 +130,10 @@
             // 
             this.uxColumn5.AutoSize = true;
             this.uxColumn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxColumn5.Location = new System.Drawing.Point(442, 12);
+            this.uxColumn5.Location = new System.Drawing.Point(322, 2);
+            this.uxColumn5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxColumn5.Name = "uxColumn5";
-            this.uxColumn5.Size = new System.Drawing.Size(80, 48);
+            this.uxColumn5.Size = new System.Drawing.Size(60, 39);
             this.uxColumn5.TabIndex = 12;
             this.uxColumn5.Text = "5";
             this.uxColumn5.UseVisualStyleBackColor = true;
@@ -131,9 +143,10 @@
             // 
             this.uxColumn6.AutoSize = true;
             this.uxColumn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxColumn6.Location = new System.Drawing.Point(528, 12);
+            this.uxColumn6.Location = new System.Drawing.Point(386, 2);
+            this.uxColumn6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxColumn6.Name = "uxColumn6";
-            this.uxColumn6.Size = new System.Drawing.Size(80, 48);
+            this.uxColumn6.Size = new System.Drawing.Size(60, 39);
             this.uxColumn6.TabIndex = 13;
             this.uxColumn6.Text = "6";
             this.uxColumn6.UseVisualStyleBackColor = true;
@@ -143,9 +156,11 @@
             // 
             this.uxPlayColumn1.BackColor = System.Drawing.Color.White;
             this.uxPlayColumn1.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.uxPlayColumn1.Location = new System.Drawing.Point(98, 73);
+            this.uxPlayColumn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPlayColumn1.Location = new System.Drawing.Point(66, 2);
+            this.uxPlayColumn1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxPlayColumn1.Name = "uxPlayColumn1";
-            this.uxPlayColumn1.Size = new System.Drawing.Size(80, 421);
+            this.uxPlayColumn1.Size = new System.Drawing.Size(60, 342);
             this.uxPlayColumn1.TabIndex = 1;
             this.uxPlayColumn1.WrapContents = false;
             // 
@@ -153,9 +168,11 @@
             // 
             this.uxPlayColumn2.BackColor = System.Drawing.Color.White;
             this.uxPlayColumn2.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.uxPlayColumn2.Location = new System.Drawing.Point(184, 73);
+            this.uxPlayColumn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPlayColumn2.Location = new System.Drawing.Point(130, 2);
+            this.uxPlayColumn2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxPlayColumn2.Name = "uxPlayColumn2";
-            this.uxPlayColumn2.Size = new System.Drawing.Size(80, 421);
+            this.uxPlayColumn2.Size = new System.Drawing.Size(60, 342);
             this.uxPlayColumn2.TabIndex = 2;
             this.uxPlayColumn2.WrapContents = false;
             // 
@@ -163,9 +180,11 @@
             // 
             this.uxPlayColumn3.BackColor = System.Drawing.Color.White;
             this.uxPlayColumn3.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.uxPlayColumn3.Location = new System.Drawing.Point(270, 73);
+            this.uxPlayColumn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPlayColumn3.Location = new System.Drawing.Point(194, 2);
+            this.uxPlayColumn3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxPlayColumn3.Name = "uxPlayColumn3";
-            this.uxPlayColumn3.Size = new System.Drawing.Size(80, 421);
+            this.uxPlayColumn3.Size = new System.Drawing.Size(60, 342);
             this.uxPlayColumn3.TabIndex = 3;
             this.uxPlayColumn3.WrapContents = false;
             // 
@@ -173,9 +192,11 @@
             // 
             this.uxPlayColumn4.BackColor = System.Drawing.Color.White;
             this.uxPlayColumn4.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.uxPlayColumn4.Location = new System.Drawing.Point(356, 73);
+            this.uxPlayColumn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPlayColumn4.Location = new System.Drawing.Point(258, 2);
+            this.uxPlayColumn4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxPlayColumn4.Name = "uxPlayColumn4";
-            this.uxPlayColumn4.Size = new System.Drawing.Size(80, 421);
+            this.uxPlayColumn4.Size = new System.Drawing.Size(60, 342);
             this.uxPlayColumn4.TabIndex = 4;
             this.uxPlayColumn4.WrapContents = false;
             // 
@@ -183,9 +204,11 @@
             // 
             this.uxPlayColumn5.BackColor = System.Drawing.Color.White;
             this.uxPlayColumn5.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.uxPlayColumn5.Location = new System.Drawing.Point(442, 73);
+            this.uxPlayColumn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPlayColumn5.Location = new System.Drawing.Point(322, 2);
+            this.uxPlayColumn5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxPlayColumn5.Name = "uxPlayColumn5";
-            this.uxPlayColumn5.Size = new System.Drawing.Size(80, 421);
+            this.uxPlayColumn5.Size = new System.Drawing.Size(60, 342);
             this.uxPlayColumn5.TabIndex = 5;
             this.uxPlayColumn5.WrapContents = false;
             // 
@@ -193,46 +216,70 @@
             // 
             this.uxPlayColumn6.BackColor = System.Drawing.Color.White;
             this.uxPlayColumn6.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.uxPlayColumn6.Location = new System.Drawing.Point(528, 73);
+            this.uxPlayColumn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPlayColumn6.Location = new System.Drawing.Point(386, 2);
+            this.uxPlayColumn6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxPlayColumn6.Name = "uxPlayColumn6";
-            this.uxPlayColumn6.Size = new System.Drawing.Size(80, 421);
+            this.uxPlayColumn6.Size = new System.Drawing.Size(60, 342);
             this.uxPlayColumn6.TabIndex = 6;
             this.uxPlayColumn6.WrapContents = false;
             // 
             // uxStatus
             // 
             this.uxStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxStatus.Location = new System.Drawing.Point(12, 500);
+            this.uxStatus.Location = new System.Drawing.Point(9, 406);
+            this.uxStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.uxStatus.Name = "uxStatus";
             this.uxStatus.ReadOnly = true;
-            this.uxStatus.Size = new System.Drawing.Size(594, 38);
+            this.uxStatus.Size = new System.Drawing.Size(446, 32);
             this.uxStatus.TabIndex = 14;
             this.uxStatus.Text = "Your move.";
             // 
+            // uxColumnContainer
+            // 
+            this.uxColumnContainer.AutoSize = true;
+            this.uxColumnContainer.Controls.Add(this.uxPlayColumn0);
+            this.uxColumnContainer.Controls.Add(this.uxPlayColumn1);
+            this.uxColumnContainer.Controls.Add(this.uxPlayColumn2);
+            this.uxColumnContainer.Controls.Add(this.uxPlayColumn3);
+            this.uxColumnContainer.Controls.Add(this.uxPlayColumn4);
+            this.uxColumnContainer.Controls.Add(this.uxPlayColumn5);
+            this.uxColumnContainer.Controls.Add(this.uxPlayColumn6);
+            this.uxColumnContainer.Location = new System.Drawing.Point(7, 55);
+            this.uxColumnContainer.Name = "uxColumnContainer";
+            this.uxColumnContainer.Size = new System.Drawing.Size(448, 346);
+            this.uxColumnContainer.TabIndex = 0;
+            // 
+            // uxButtonContainer
+            // 
+            this.uxButtonContainer.Controls.Add(this.uxColumn0);
+            this.uxButtonContainer.Controls.Add(this.uxColumn1);
+            this.uxButtonContainer.Controls.Add(this.uxColumn2);
+            this.uxButtonContainer.Controls.Add(this.uxColumn3);
+            this.uxButtonContainer.Controls.Add(this.uxColumn4);
+            this.uxButtonContainer.Controls.Add(this.uxColumn5);
+            this.uxButtonContainer.Controls.Add(this.uxColumn6);
+            this.uxButtonContainer.Location = new System.Drawing.Point(7, 6);
+            this.uxButtonContainer.Name = "uxButtonContainer";
+            this.uxButtonContainer.Size = new System.Drawing.Size(449, 44);
+            this.uxButtonContainer.TabIndex = 15;
+            // 
             // UserInterface
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 555);
+            this.ClientSize = new System.Drawing.Size(464, 451);
+            this.Controls.Add(this.uxButtonContainer);
+            this.Controls.Add(this.uxColumnContainer);
             this.Controls.Add(this.uxStatus);
-            this.Controls.Add(this.uxPlayColumn6);
-            this.Controls.Add(this.uxPlayColumn5);
-            this.Controls.Add(this.uxPlayColumn4);
-            this.Controls.Add(this.uxPlayColumn3);
-            this.Controls.Add(this.uxPlayColumn2);
-            this.Controls.Add(this.uxPlayColumn1);
-            this.Controls.Add(this.uxColumn6);
-            this.Controls.Add(this.uxColumn5);
-            this.Controls.Add(this.uxColumn4);
-            this.Controls.Add(this.uxColumn3);
-            this.Controls.Add(this.uxColumn2);
-            this.Controls.Add(this.uxColumn1);
-            this.Controls.Add(this.uxColumn0);
-            this.Controls.Add(this.uxPlayColumn0);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UserInterface";
             this.Text = "Connect 4";
             this.Load += new System.EventHandler(this.UserInterface_Load);
+            this.uxColumnContainer.ResumeLayout(false);
+            this.uxButtonContainer.ResumeLayout(false);
+            this.uxButtonContainer.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +302,8 @@
         private System.Windows.Forms.FlowLayoutPanel uxPlayColumn5;
         private System.Windows.Forms.FlowLayoutPanel uxPlayColumn6;
         private System.Windows.Forms.TextBox uxStatus;
+        private System.Windows.Forms.FlowLayoutPanel uxColumnContainer;
+        private System.Windows.Forms.FlowLayoutPanel uxButtonContainer;
     }
 }
 

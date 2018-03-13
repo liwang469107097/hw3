@@ -82,7 +82,7 @@ namespace Ksu.Cis300.ConnectFour
             if (num >= 0 && num <= 6)
             {
                 b.Enabled = true;
-
+                f.Controls.Add(label);
             }
             else
             {
@@ -112,14 +112,14 @@ namespace Ksu.Cis300.ConnectFour
             {
                 if (set.ComputerPlaysFirst)
                 {
-                    ComputerPlayer computer = new ComputerPlayer(1, set.Level, _board);
+                    _computerPlayer = new ComputerPlayer(1, set.Level, _board);
                     set.Visible = true;
                     MakeComputerPlay();
                     uxStatus.Text = "Your move.";
                 }
                 else
                 {
-                    ComputerPlayer computer = new ComputerPlayer(-1, set.Level, _board);
+                    _computerPlayer = new ComputerPlayer(-1, set.Level, _board);
                 }
             }
             else

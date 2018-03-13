@@ -149,16 +149,9 @@ namespace Ksu.Cis300.ConnectFour
         private int PathLength(int row, int column, int vIncrement, int hIncrement, int player)
         {
             int num = 0;
-            while (row >= 0 && row < Rows && column >= 0 && column < Columns)
+            while (column >= 0 && column < Columns && row >= 0 && row < _cells[column].Count && _cells[column][row] == player)
             {
-                if(_cells[column][row] != 0 && _currentPlayer == player)
-                {
-                    num++;
-                }
-                else
-                {
-                    break;
-                }
+                num++;
                 row += vIncrement;
                 column += hIncrement;
             }
@@ -174,19 +167,23 @@ namespace Ksu.Cis300.ConnectFour
         /// <returns> a bool indicating whether a piece belonging to the given player would complete four in a row if played on the given cell. </returns>
         public bool IsPotentialWin(int row, int column, int player)
         {
-            if (PathLength(row, column, -1, -1, player) == 4)
+            if (PathLength(row, column, -1, -1, player) >= 3)
             {
                 return true;
             }
-            else if (PathLength(row, column, -1, 1, player) == 4)
+            else if (PathLength(row, column, -1, 1, player) >= 3)
             {
                 return true;
             }
-            else if (PathLength(row, column, 0, 1, player) == 4)
+            else if (PathLength(row, column, 0, 1, player) >= 3)
             {
                 return true;
             }
-            return PathLength(row, column, 1, 0, player) == 4;
+            else if(PathLength(row, column, 1, 0, player) >= 3)
+            { 
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -196,12 +193,7 @@ namespace Ksu.Cis300.ConnectFour
         {
             get
             {
-                int column = _history.Peek();
-                if (_currentPlayer == FirstPlayer)
-                {
-                    return IsPotentialWin(ColumnCount(column) - 1, column, -1);
-                }
-                return IsPotentialWin(ColumnCount(column) - 1, column, FirstPlayer);
+                return IsPotentialWin(_cells[_history.Peek()].Count - 1, _history.Peek(), -_currentPlayer);
             }
         }
     }
