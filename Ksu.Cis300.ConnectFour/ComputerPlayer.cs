@@ -130,6 +130,8 @@ namespace Ksu.Cis300.ConnectFour
                     }
                     else if(_board.IsDrawn)
                     {
+                        column = i;
+                        _board.Undo();
                         return _winValue;
                     }
                     else if (depth == 1)
@@ -142,7 +144,7 @@ namespace Ksu.Cis300.ConnectFour
                         max++;
                         depth--;
                     }
-                    if (value > max)
+                    if (value < max)
                     {
                         value = max;
                         _board.Undo();

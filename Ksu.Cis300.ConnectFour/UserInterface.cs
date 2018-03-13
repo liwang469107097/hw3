@@ -82,7 +82,7 @@ namespace Ksu.Cis300.ConnectFour
             if (num >= 0 && num <= 6)
             {
                 b.Enabled = true;
-                f.Controls.Add(label);
+                uxButtonContainer.Controls.Add(label);
             }
             else
             {
