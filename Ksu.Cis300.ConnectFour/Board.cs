@@ -179,7 +179,7 @@ namespace Ksu.Cis300.ConnectFour
             {
                 return true;
             }
-            else if (PathLength(row, column, -1, 0, player) >= 3)
+            else if (PathLength(row, column, -1, 0, player) + PathLength(row, column, 1, 0, player) >= 3)
             {
                 return true;
             }
@@ -196,7 +196,7 @@ namespace Ksu.Cis300.ConnectFour
         {
             get
             {
-                return IsPotentialWin(_cells[_history.Peek()].Count - 1, _history.Peek() * _currentPlayer, _currentPlayer);
+                return IsPotentialWin(_cells[_history.Peek()].Count - 1, _history.Peek(), -_currentPlayer);
             }
         }
     }

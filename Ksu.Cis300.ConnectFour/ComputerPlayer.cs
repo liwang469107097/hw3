@@ -59,18 +59,6 @@ namespace Ksu.Cis300.ConnectFour
         /// <returns>an int giving the value of the evaluation function. </returns>
         private int ComputeEvaluationFunction(int player)
         {
-            /*int value = 0;
-            int column = Board.Columns;
-            int unoccupiedRow = _board.ColumnCount(column) + 1;
-            for (int i = 0; i < column; i++)
-            {
-                for (int j = 0; j < unoccupiedRow; j++)
-                {
-                    value += _board.Score(player) + _heuristicMultiplier;
-                }
-            }
-            return value;*/
-
             int value = _board.Score(player);
             for (int i = 0; i < Board.Columns; i++)
             {
@@ -84,13 +72,13 @@ namespace Ksu.Cis300.ConnectFour
                     limit = Math.Max(limit, _board.ColumnCount(i + 1));
                 }
                 limit = Math.Min(limit + 1, Board.Rows);
-                for (int j = _board.ColumnCount(i); j <= limit; j++)
-                {
+                for (int j = _board.ColumnCount(i); j < limit; j++)
+                { 
                     if (_board.IsPotentialWin(i, j, player))
                     {
                         value += _heuristicMultiplier;
                     }
-                    else if (_board.IsPotentialWin(i, j, -player))
+                    if (_board.IsPotentialWin(i, j, -player))
                     {
                         value -= _heuristicMultiplier;
                     }
@@ -142,7 +130,6 @@ namespace Ksu.Cis300.ConnectFour
                         max = value;
                         column = i;
                     }
-
                     _board.Undo();
                 }
             }
