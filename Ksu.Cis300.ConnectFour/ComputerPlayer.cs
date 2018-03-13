@@ -74,11 +74,11 @@ namespace Ksu.Cis300.ConnectFour
                 limit = Math.Min(limit + 1, Board.Rows);
                 for (int j = _board.ColumnCount(i); j < limit; j++)
                 { 
-                    if (_board.IsPotentialWin(i, j, player))
+                    if (_board.IsPotentialWin(j, i, player))
                     {
                         value += _heuristicMultiplier;
                     }
-                    if (_board.IsPotentialWin(i, j, -player))
+                    if (_board.IsPotentialWin(j, i, -player))
                     {
                         value -= _heuristicMultiplier;
                     }
