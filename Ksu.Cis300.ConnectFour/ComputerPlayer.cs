@@ -37,7 +37,7 @@ namespace Ksu.Cis300.ConnectFour
         /// <summary>
         /// The Board representing the current game.
         /// </summary>
-        private Board _board = new Board();
+        private Board _board;
 
         /// <summary>
         /// A public constructor
@@ -123,7 +123,8 @@ namespace Ksu.Cis300.ConnectFour
                     }
                     else
                     {
-                        value = -EvaluateCurrentPosition(-player, depth - 1, out column);
+                        int temp;
+                        value = -EvaluateCurrentPosition(-player, depth - 1, out temp);
                     }
                     if (value > max)
                     {

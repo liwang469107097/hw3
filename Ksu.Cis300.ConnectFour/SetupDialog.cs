@@ -33,7 +33,14 @@ namespace Ksu.Cis300.ConnectFour
         {
             get
             {
-                return uxComputerFirst.Checked;
+                if (uxComputerFirst.Checked)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 

@@ -37,12 +37,12 @@ namespace Ksu.Cis300.ConnectFour
         /// <summary>
         /// store the pieces played on the board.
         /// </summary>
-        private List<int>[] _cells = new List<int>[Columns];
+        private List<int>[] _cells;
 
         /// <summary>
         /// record the player whose turn it is to play.
         /// </summary>
-        private int _currentPlayer;
+        private int _currentPlayer = FirstPlayer;
 
         /// <summary>
         /// store the history of plays 
@@ -74,11 +74,7 @@ namespace Ksu.Cis300.ConnectFour
         {
             get
             {
-                if (_history.Count == _cells.Length)
-                {
-                    return true;
-                }
-                return false;
+                return _history.Count == _numberOfCells;
             }
         }
 
@@ -87,7 +83,8 @@ namespace Ksu.Cis300.ConnectFour
         /// </summary>
         public Board()
         {
-            for (int i = 0; i < _cells.Length; i++)
+            _cells = new List<int>[Columns];
+            for (int i = 0; i < Columns; i++)
             {
                 _cells[i] = new List<int>();
             }
@@ -99,9 +96,9 @@ namespace Ksu.Cis300.ConnectFour
         /// <param name="column">the column of the play. </param>
         public void Play(int column)
         {
-            _score += _cellValues[_cells[column].Count, column] * _currentPlayer;
-            _history.Push(column);
+            _score += _currentPlayer * _cellValues[_cells[column].Count, column];
             _cells[column].Add(_currentPlayer);
+            _history.Push(column);
             _currentPlayer = -_currentPlayer;
         }
 
@@ -112,8 +109,8 @@ namespace Ksu.Cis300.ConnectFour
         {
             int column = _history.Pop();
             _currentPlayer = -_currentPlayer;
-            _cells[column].RemoveAt(_currentPlayer);
-            _score -= _cellValues[_cells[column].Count, column] * _currentPlayer;
+            _cells[column].RemoveAt(_cells[column].Count - 1);
+            _score -= _currentPlayer * _cellValues[_cells[column].Count, column];
         }
 
         /// <summary>
@@ -149,11 +146,10 @@ namespace Ksu.Cis300.ConnectFour
         private int PathLength(int row, int column, int vIncrement, int hIncrement, int player)
         {
             int num = 0;
-            while (column >= 0 && column < Columns && row >= 0 && row < _cells[column].Count && _cells[column][row] == player)
+            //while (column >= 0 && column < Columns && row >= 0 && row < _cells[column].Count && _cells[column][row] == player)
+            for (int i = row + vIncrement, j = column + hIncrement; j < Columns && j >= 0 && i < _cells[j].Count && i >= 0 && _cells[j][i] == player; i += vIncrement, j += hIncrement)
             {
                 num++;
-                row += vIncrement;
-                column += hIncrement;
             }
             return num;
         }
@@ -179,7 +175,7 @@ namespace Ksu.Cis300.ConnectFour
             {
                 return true;
             }
-            else if (PathLength(row, column, -1, 0, player) + PathLength(row, column, 1, 0, player) >= 3)
+            else if (PathLength(row, column, -1, 0, player) >= 3)
             {
                 return true;
             }
@@ -196,7 +192,8 @@ namespace Ksu.Cis300.ConnectFour
         {
             get
             {
-                return IsPotentialWin(_cells[_history.Peek()].Count - 1, _history.Peek(), -_currentPlayer);
+                int column = _history.Peek();
+                return IsPotentialWin(ColumnCount(column) - 1, column, -_currentPlayer);
             }
         }
     }

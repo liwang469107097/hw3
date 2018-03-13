@@ -29,7 +29,7 @@ namespace Ksu.Cis300.ConnectFour
         /// <summary>
         /// A Board giving an internal represenation of the current board position.
         /// </summary>
-        private Board _board = new Board();
+        private Board _board;
 
         /// <summary>
         /// A ComputerPlayer representing the computer player.
@@ -42,14 +42,9 @@ namespace Ksu.Cis300.ConnectFour
         /// <param name="message">given message to show in the TextBox</param>
         private void FinishGame(string message)
         {
-            uxColumn0.Enabled = false;
-            uxColumn1.Enabled = false;
-            uxColumn2.Enabled = false;
-            uxColumn3.Enabled = false;
-            uxColumn4.Enabled = false;
-            uxColumn5.Enabled = false;
-            uxColumn6.Enabled = false;
             uxStatus.Text = message;
+            uxButtonContainer.Enabled = false;
+            
         }
 
         /// <summary>
@@ -59,12 +54,17 @@ namespace Ksu.Cis300.ConnectFour
         /// <returns>a bool indicating whether the game is over.</returns>
         private bool GameIsOver(string message)
         {
-            bool over = _board.LastPlayWins;
-            if (over)
+            if (_board.LastPlayWins)
             {
                 FinishGame(message);
+                return true;
             }
-            return over;
+            else if (_board.IsDrawn)
+            {
+                uxStatus.Text = "Board was drawn.";
+                return true;
+            }
+            return false;
         }
         /// <summary>
         /// A method to show a play on the form
@@ -76,9 +76,9 @@ namespace Ksu.Cis300.ConnectFour
             Label label = new Label();
             label.Text = symbol;
             label.AutoSize = true;
-            int num = _board.ColumnCount(column);
-            uxColumnContainer.Controls[column].Controls.Add(label);
-            if (num == 6)
+            Control.ControlCollection c = uxColumnContainer.Controls;
+            c[column].Controls.Add(label);
+            if (_board.ColumnCount(column) == Board.Rows)
             {
                 uxButtonContainer.Controls[column].Enabled = false;
             }
@@ -90,7 +90,7 @@ namespace Ksu.Cis300.ConnectFour
         /// </summary>
         private void MakeComputerPlay()
         {
-            uxStatus.Text = "My move.";
+            uxStatus.Text = "My Move.";
             Update();
             ShowPlay(_computerPlayer.MakePlay(), "X");
         }
@@ -105,15 +105,17 @@ namespace Ksu.Cis300.ConnectFour
             SetupDialog set = new SetupDialog();
             if (set.ShowDialog() == DialogResult.OK)
             {
-                if (set.ComputerPlaysFirst)
+                _board = new Board();
+                if (set.ComputerPlaysFirst == true)
                 {
-                    _computerPlayer = new ComputerPlayer(1, set.Level, _board);
+                    _computerPlayer = new ComputerPlayer(Board.FirstPlayer, set.Level, _board);
+                    Visible = true;
                     MakeComputerPlay();
-                    uxStatus.Text = "Your move.";
+                    uxStatus.Text = "Your Move.";
                 }
                 else
                 {
-                    _computerPlayer = new ComputerPlayer(-1, set.Level, _board);
+                    _computerPlayer = new ComputerPlayer((-1) * Board.FirstPlayer, set.Level, _board);
                 }
             }
             else
@@ -133,15 +135,13 @@ namespace Ksu.Cis300.ConnectFour
             int column = Convert.ToInt32(b.Text);
             _board.Play(column);
             ShowPlay(column, "O");
-            if (!GameIsOver(uxStatus.Text))
+            if (!GameIsOver("You Win!"))
             {
                 MakeComputerPlay();
-                uxStatus.Text = "Your move.";
-            }
-            else
-            {
-                ShowPlay(column, "X");
-                uxStatus.Text = "I move.";
+                if (! GameIsOver("I Win!"))
+                {
+                    uxStatus.Text = "Your Move.";
+                }
             }
         }
     }
