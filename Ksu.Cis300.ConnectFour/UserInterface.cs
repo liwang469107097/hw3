@@ -77,17 +77,12 @@ namespace Ksu.Cis300.ConnectFour
             label.Text = symbol;
             label.AutoSize = true;
             int num = _board.ColumnCount(column);
-            Button b = new Button();
-            FlowLayoutPanel f = new FlowLayoutPanel();
-            if (num >= 0 && num <= 6)
+            uxColumnContainer.Controls[column].Controls.Add(label);
+            if (num == 6)
             {
-                b.Enabled = true;
-                uxButtonContainer.Controls.Add(label);
+                uxButtonContainer.Controls[column].Enabled = false;
             }
-            else
-            {
-                b.Enabled = false;
-            }
+
         }
 
         /// <summary>
@@ -97,7 +92,7 @@ namespace Ksu.Cis300.ConnectFour
         {
             uxStatus.Text = "My move.";
             Update();
-            ShowPlay(_computerPlayer.MakePlay(), uxStatus.Text);
+            ShowPlay(_computerPlayer.MakePlay(), "X");
         }
 
         /// <summary>
@@ -113,7 +108,6 @@ namespace Ksu.Cis300.ConnectFour
                 if (set.ComputerPlaysFirst)
                 {
                     _computerPlayer = new ComputerPlayer(1, set.Level, _board);
-                    set.Visible = true;
                     MakeComputerPlay();
                     uxStatus.Text = "Your move.";
                 }

@@ -167,23 +167,26 @@ namespace Ksu.Cis300.ConnectFour
         /// <returns> a bool indicating whether a piece belonging to the given player would complete four in a row if played on the given cell. </returns>
         public bool IsPotentialWin(int row, int column, int player)
         {
-            if (PathLength(row, column, -1, -1, player) >= 3)
+            if (PathLength(row, column, 1, -1, player) + PathLength(row, column, -1, 1, player) >= 3)
             {
                 return true;
             }
-            else if (PathLength(row, column, -1, 1, player) >= 3)
+            else if (PathLength(row, column, 1, 1, player) + PathLength(row, column, -1, -1, player) >= 3)
             {
                 return true;
             }
-            else if (PathLength(row, column, 0, 1, player) >= 3)
+            else if (PathLength(row, column, 0, 1, player) + PathLength(row, column, 0, -1, player) >= 3)
             {
                 return true;
             }
-            else if(PathLength(row, column, 1, 0, player) >= 3)
-            { 
+            else if (PathLength(row, column, -1, 0, player) >= 3)
+            {
                 return true;
             }
-            return false;
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -193,7 +196,7 @@ namespace Ksu.Cis300.ConnectFour
         {
             get
             {
-                return IsPotentialWin(_cells[_history.Peek()].Count - 1, _history.Peek(), -_currentPlayer);
+                return IsPotentialWin(_cells[_history.Peek()].Count - 1, _history.Peek() * _currentPlayer, _currentPlayer);
             }
         }
     }

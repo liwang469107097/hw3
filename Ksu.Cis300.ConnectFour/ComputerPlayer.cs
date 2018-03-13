@@ -74,23 +74,17 @@ namespace Ksu.Cis300.ConnectFour
             int value = _board.Score(player);
             for (int i = 0; i < Board.Columns; i++)
             {
-                int l;
-                if (i == 0)
+                int limit = _board.ColumnCount(i);
+                if (i > 0)
                 {
-                    l = Math.Max(_board.ColumnCount(0), _board.ColumnCount(1));
+                    limit = Math.Max(limit, _board.ColumnCount(i - 1));
                 }
-                else if(i == 6)
+                if(i < Board.Columns - 1)
                 {
-                    l = Math.Max(_board.ColumnCount(6), _board.ColumnCount(5));
+                    limit = Math.Max(limit, _board.ColumnCount(i + 1));
                 }
-                else
-                {
-                    int l1 = Math.Max(_board.ColumnCount(i - 1), _board.ColumnCount(i));
-                    int l2 = Math.Max(_board.ColumnCount(i), _board.ColumnCount(i + 1));
-                    l = Math.Max(l1, l2);
-                }
-                l--;
-                for (int j = _board.ColumnCount(i); j <= l; j++)
+                limit = Math.Min(limit + 1, Board.Rows);
+                for (int j = _board.ColumnCount(i); j <= limit; j++)
                 {
                     if (_board.IsPotentialWin(i, j, player))
                     {
@@ -116,9 +110,9 @@ namespace Ksu.Cis300.ConnectFour
         {
             int max = Int32.MinValue;
             column = 0;
-            int value = 0;
             for (int i = 0; i < Board.Columns; i++)
             {
+                int value;
                 if (_board.ColumnCount(i) < Board.Rows)
                 {
                     _board.Play(i);
@@ -132,26 +126,27 @@ namespace Ksu.Cis300.ConnectFour
                     {
                         column = i;
                         _board.Undo();
-                        return _winValue;
+                        return 0;
                     }
                     else if (depth == 1)
                     {
-                        return EvaluateCurrentPosition(player, depth, out column);
+                        value = -ComputeEvaluationFunction(-player);
 
                     }
                     else
                     {
-                        max++;
-                        depth--;
+                        value = -EvaluateCurrentPosition(-player, depth - 1, out column);
                     }
-                    if (value < max)
+                    if (value > max)
                     {
-                        value = max;
-                        _board.Undo();
+                        max = value;
+                        column = i;
                     }
+
+                    _board.Undo();
                 }
             }
-            return value;
+            return max;
         }
 
         /// <summary>
